@@ -1,31 +1,31 @@
 package com.fastcampus.pass.repository.pass;
 
-import com.fastcampus.pass.repository.BaseEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+
 import java.time.LocalDateTime;
+
+import static javax.persistence.GenerationType.*;
 
 @Getter
 @Setter
 @ToString
 @Entity
-@Table(name = "pass")
-public class PassEntity extends BaseEntity {
+@Table(name = "bulk_pass")
+public class BulkPassEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer passSeq;
+    @GeneratedValue(strategy = IDENTITY)
+    private Integer bulkpassSeq;
     private Integer packageSeq;
-    private String userId;
+    private String userGroupId;
 
     @Enumerated(EnumType.STRING)
-    private PassStatus status;
-    private Integer remainingCount;
+    private BulkPassStatus status;
+    private Integer count;
 
     private LocalDateTime startedAt;
     private LocalDateTime endedAt;
-    private LocalDateTime expiredAt;
-
 }
